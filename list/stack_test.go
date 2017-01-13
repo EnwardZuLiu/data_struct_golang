@@ -1,7 +1,6 @@
 package list
 
 import (
-	"log"
 	"testing"
 )
 
@@ -14,10 +13,17 @@ func Test(t *testing.T) {
 	stack.Push("liuzm4")
 	stack.Push("liuzm5")
 	stack.Push("liuzm6")
-	log.Println(stack.Length())
-	for stack.Length() > 0 {
-		log.Printf("%s \n", stack.Pop().(string))
-		log.Println(stack.Length())
+	if stack.Length() == 7 && stack.top.data == "liuzm6" {
+		t.Log("success")
+	} else {
+		t.Error("fail")
 	}
-	log.Println()
+	for stack.Length() > 0 {
+		t.Log(stack.Pop().(string))
+	}
+	if stack.IsEmpty() {
+		t.Log("success")
+	} else {
+		t.Error("fail")
+	}
 }
