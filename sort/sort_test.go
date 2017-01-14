@@ -33,3 +33,15 @@ func Test_InsertSort(t *testing.T) {
 	slice := InsertSort(inputArr[:])
 	log.Println(slice)
 }
+
+func Test_ShellSort(t *testing.T) {
+	var inputArr [10]int
+	randSource := rand.NewSource(time.Now().Unix())
+	r := rand.New(randSource)
+	for i := 0; i < 10; i++ {
+		inputArr[i] = r.Intn(10)
+	}
+	log.Println(inputArr)
+	slice := ShellSort(inputArr[:])
+	log.Println(slice)
+}
