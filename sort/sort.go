@@ -40,3 +40,38 @@ func ShellSort(arr []int) []int {
 	}
 	return arr
 }
+
+func HeapSort(arr []int) {
+	N := len(arr) - 1
+	for k := N/2 ; k >= 1; k-- {
+		sink(arr, k, N)
+	}
+	for N >= 1 {
+		arr[1], arr[N] = arr[N], arr[1]
+		N--
+		sink(arr, 1 ,N)
+	}
+	for j := 0; j < len(arr) - 1; j++ {
+		if arr[j] > arr[j+1] {
+			arr[j], arr[j+1] = arr[j+1], arr[j]
+		}
+	}
+}
+
+func sink(s []int, k, N int) {
+	for{
+		i := 2 * k
+		if i > N {
+			break
+		}
+		if i < N && s[i+1] > s[i] {
+			i++
+		}
+		if s[k] > s[i] {
+			break
+		}
+		s[k], s[i] = s[i], s[k]
+		k = i
+	}
+}
+
