@@ -41,3 +41,10 @@ func (q *Queue) Dequeue() interface{} {
 	q.size--
 	return val
 }
+
+/**
+ * 对队列中的每一个元素进行 visit 操作
+ */
+func (q *Queue) Traverse(visit func(interface{})) {
+
+}
