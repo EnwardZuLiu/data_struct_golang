@@ -47,3 +47,39 @@ func longestCommonPrefix(strs []string) string {
 	}
 	return string(runes[0][0:prefixNumber])
 }
+
+// leetcode 20 有效的括号
+func isValid(s string) bool {
+	dict := map[rune]int{'(': -1, ')': 1, '[': -2, ']': 2, '{': -3, '}': 3}
+
+	runes := []rune(s)
+	if len(runes) == 0 {
+		return true
+	}
+
+	stack := make([]rune, 10)
+	stackTop := -1
+
+	for i := 0; i < len(runes); i++ {
+		if dict[runes[i]] < 0 {
+			stackTop++
+			stack[stackTop] = runes[i]
+		} else {
+			if stackTop < 0 { // stack is empty, is false
+				return false
+			}
+			flag := stack[stackTop]
+			stackTop--
+			if dict[flag]+dict[runes[i]] == 0 {
+				continue
+			} else {
+				return false
+			}
+		}
+	}
+	if stackTop >= 0 {
+		return false
+	}
+
+	return true
+}
