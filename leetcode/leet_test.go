@@ -100,3 +100,21 @@ func Test_for(t *testing.T) {
 		// but the old one (the loop variable) is not.
 	}
 }
+
+func Test_removeDuplicates(t *testing.T) {
+	i := removeDuplicates([]int{0, 0, 1, 1, 1, 2})
+	if i == 3 {
+		t.Log("SUCESSS")
+	} else {
+		t.Error("result should is 3")
+	}
+}
+
+func Test_removeDuplicates1(t *testing.T) {
+	i := removeDuplicates1([]int{0, 0, 1, 1, 1, 2, 3, 4, 5, 6, 7, 8, 9})
+	if i == 10 {
+		t.Log("SUCCESS")
+	} else {
+		t.Error("result should is 3")
+	}
+}

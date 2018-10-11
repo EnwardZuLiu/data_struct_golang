@@ -1,6 +1,7 @@
 package leetcode
 
 import (
+	"fmt"
 	"math"
 )
 
@@ -82,4 +83,47 @@ func isValid(s string) bool {
 	}
 
 	return true
+}
+
+// 删除排序数组中的重复项  26
+func removeDuplicates(nums []int) int {
+	size := len(nums)
+	for i := 0; i < size-1; {
+		if nums[i] == nums[i+1] {
+			shiftElement(i, &nums)
+			size = size - 1
+		} else {
+			i++
+		}
+	}
+	for i := 0; i < size; i++ {
+		fmt.Print(i)
+	}
+	return size
+}
+
+// 位移数组中的元素
+func shiftElement(index int, nums *[]int) {
+	size := len(*nums)
+	if index < 0 || index >= size {
+		return
+	}
+	for i := index; i < size-1; i++ {
+		(*nums)[i] = (*nums)[i+1]
+	}
+}
+
+// 双指针来实现该功能，由于数组是排序过的，所以 j 对应的元素只会越来越大，每次比 i 所指向的元素更大之后，给 i++赋值替换即可
+func removeDuplicates1(nums []int) int {
+	if len(nums) == 0 {
+		return 0
+	}
+	var i int = 0
+	for j := 1; j < len(nums); j++ {
+		if nums[j] != nums[i] {
+			i++
+			nums[i] = nums[j]
+		}
+	}
+	return i + 1
 }
