@@ -18,7 +18,19 @@ func Test_SelectSort(t *testing.T) {
 		inputArr[i] = r.Intn(10)
 	}
 	log.Println(inputArr)
-	slice := SelectSort(inputArr[:])
+	slice := SelectionSort(inputArr[:])
+	log.Println(slice)
+}
+
+func Test_BubbleSort(t *testing.T) {
+	var inputArr [10]int
+	randSource := rand.NewSource(time.Now().Unix())
+	r := rand.New(randSource)
+	for i := 0; i < 10; i++ {
+		inputArr[i] = r.Intn(10)
+	}
+	log.Println(inputArr)
+	slice := BubbleSort(inputArr[:])
 	log.Println(slice)
 }
 
