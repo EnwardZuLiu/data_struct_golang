@@ -65,21 +65,31 @@ func InsertSort(arr []int) []int {
 	return arr
 }
 
+/**
+ * 希尔排序：
+ */
 func ShellSort(arr []int) []int {
 	length := len(arr)
-	h := 1
-	for h < length/3 {
-		h = h*3 + 1
+	if length < 2 {
+		return arr
 	}
-	for h >= 1 {
-		for i := h; i < length; i++ {
-			for j := i; j >= h && arr[j] < arr[j-h]; j -= h {
-				arr[j], arr[j-h] = arr[j-h], arr[j]
+	for g := length / 2; g > 0; g /= 2 {
+		for i := g; i < length; i++ {
+			for j := i; j >= 0; j -= g {
+				if j >= g && arr[j] < arr[j-g] {
+					arr[j], arr[j-g] = arr[j-g], arr[j]
+				}
 			}
 		}
-		h /= 3
 	}
 	return arr
+}
+
+/**
+ * 快速排序：
+ */
+func QuickSort(arr []int) []int {
+	return nil
 }
 
 func HeapSort(arr []int) {
